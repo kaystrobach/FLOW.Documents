@@ -1,14 +1,14 @@
 <div class="form-group">
 	<label for="workspaceName" class="col-sm-2 control-label">
-		<f:translate>Name</f:translate>
+		{f:translate(value:'name')}
 	</label>
 	<div class="col-sm-10">
 		<f:form.textfield property="name" class="form-control" id="workspaceName"  />
 	</div>
-</div>
+</div><BR />
 <div class="form-group">
 	<label for="workspaceDescription" class="col-sm-2 control-label">
-		<f:translate>Description</f:translate>
+		{f:translate(value:'description')}
 	</label>
 	<div class="col-sm-10">
 		<f:form.textarea property="description" class="form-control" id="workspaceDescription"  />

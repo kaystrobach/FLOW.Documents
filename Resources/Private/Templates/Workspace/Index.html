@@ -1,7 +1,7 @@
 <f:layout name="Bootstrap" />
 
 <f:section name="Title">
-	<f:translate>Workspaces</f:translate>
+	{f:translate(value:'documents')}
 </f:section>
 
 <f:section name="Content">
@@ -12,7 +12,7 @@
 				<thead>
 				<tr>
 					<th>
-						<f:translate>Workspaces</f:translate>
+					{f:translate(value:'workspaces')}
 					</th>
 					<th>
 						<f:link.action action="new" title="{f:translate(value:'create a new workspace')}" class="btn btn-link pull-right">
@@ -24,7 +24,7 @@
 				<f:for each="{workspaces}" as="workspace">
 					<tr>
 						<td>
-							<f:link.action action="index" controller="folder" arguments="{folder:workspace.folder}" class="btn btn-link">
+							<f:link.action action="index" controller="folder" arguments="{folder:workspace.folder}" class="btn btn-link" title="{f:translate(value:'open workspace')}">
 								<span class="glyphicon glyphicon-briefcase"></span>
 								{workspace.name}
 							</f:link.action><br>
@@ -33,11 +33,11 @@
 							</small>
 						</td>
 						<td>
-							<f:link.action action="edit" arguments="{workspace:workspace}" class="btn btn-link pull-right">
+							<f:link.action action="edit" arguments="{workspace:workspace}" class="btn btn-link pull-right" title="{f:translate(value:'edit workspace')}">
 								<span class="glyphicon glyphicon-pencil"></span>
 							</f:link.action>
 
-							<a href="" class="btn btn-link pull-right" data-toggle="modal" data-target="#delete-{workspace -> f:format.identifier()}">
+							<a href="" class="btn btn-link pull-right" data-toggle="modal" title="{f:translate(value:'delete workspace')}" data-target="#delete-{workspace -> f:format.identifier()}">
 								<span class="glyphicon glyphicon-trash"></span>
 							</a>
 						</td>
@@ -55,16 +55,16 @@
 					<div class="modal-content">
 						<div class="modal-header">
 							<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-							<h4 class="modal-title" id="myModalLabel"><f:translate>Delete</f:translate> {workspace.name}?</h4>
+							<h4 class="modal-title" id="myModalLabel">{f:translate(value:'The workspace and all files and folders within will be deleted')}</h4>
 						</div>
 						<div class="modal-body">
-							<f:translate>The workspace and all files and folders within will be deleted</f:translate>
+							{f:translate(value:'delete workspace?')}
 						</div>
 						<div class="modal-footer">
-							<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+							<button type="button" class="btn btn-default" data-dismiss="modal">Schließen</button>
 							<button type="submit" class="btn btn-primary">
 								<span class="glyphicon glyphicon-trash"></span>
-								<f:translate>Delete</f:translate>
+								{f:translate(value:'delete')}
 							</button>
 						</div>
 					</div>

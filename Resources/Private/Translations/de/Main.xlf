@@ -3,26 +3,31 @@
 	<file original="" source-language="en" target-language="de" datatype="plaintext">
 		<body>
             <trans-unit id="filename">
-                <source>Filename</source>
+                <source>filename</source>
                 <target>Dateiname</target>
             </trans-unit>
 
             <trans-unit id="file.update">
-                <source>Update file</source>
+                <source>update file</source>
                 <target>Datei aktualisieren</target>
             </trans-unit>
 
+             <trans-unit id="file.index">
+               <source>files in</source>
+               <target>Dateien in </target>
+            </trans-unit>
+
             <trans-unit id="file.new">
-                <source>new File</source>
+                <source>new file</source>
                 <target>Neue Datei</target>
             </trans-unit>
 
             <trans-unit id="file.create">
-                <source>Create a file</source>
+                <source>create a file</source>
                 <target>Datei anlegen</target>
             </trans-unit>
 
-            <trans-unit id="file.upload">
+            <trans-unit id="file.uploads">
                 <source>upload some new files</source>
                 <target>Einige Dateien hochladen</target>
             </trans-unit>
@@ -32,28 +37,63 @@
                 <target>Eine Datei hochladen</target>
             </trans-unit>
 
-            <trans-unit id="File">
-                <source>File</source>
+            <trans-unit id="file">
+                <source>file</source>
                 <target>Datei</target>
             </trans-unit>
 
+            <trans-unit id="folder.delete_hinweis">
+               <source>The folder and all subfolders will be deleted.</source>
+               <target>Der Ordner mit allen Unterordnern wird gelöscht.</target>
+            </trans-unit>
+
+            <trans-unit id="file.delete_hinweis">
+               <source>The file will be deleted.</source>
+               <target>Die Datei wird gelöscht.</target>
+            </trans-unit>
+
             <trans-unit id="name">
-                <source>Name</source>
+                <source>name</source>
                 <target>Name</target>
             </trans-unit>
 
+            <trans-unit id="delete">
+                <source>delete</source>
+                <target>Löschen</target>
+            </trans-unit>
+
+            <trans-unit id="edit">
+                <source>edit</source>
+                <target>Ändern</target>
+            </trans-unit>
+
+            <trans-unit id="upload">
+                <source>upload</source>
+                <target>Hochladen</target>
+            </trans-unit>
+
+           <trans-unit id="save">
+               <source>save</source>
+               <target>Speichern</target>
+           </trans-unit>
+
             <trans-unit id="description">
-                <source>Description</source>
+                <source>description</source>
                 <target>Beschreibung</target>
             </trans-unit>
 
             <trans-unit id="folder">
-                <source>Folder</source>
+                <source>folder</source>
                 <target>Ordner</target>
             </trans-unit>
 
+            <trans-unit id="folder.open">
+                <source>open folder</source>
+                <target>Ordner öffnen</target>
+            </trans-unit>
+
             <trans-unit id="folders.index">
-                <source>Folders in </source>
+                <source>folder in</source>
                 <target>Ordner in </target>
             </trans-unit>
 
@@ -62,44 +102,49 @@
                 <target>Ordner anlegen</target>
             </trans-unit>
 
+            <trans-unit id="folder.new">
+                <source>new folder</source>
+                <target>Neuen Ordner anlegen</target>
+            </trans-unit>
+
             <trans-unit id="files.in">
-                <source>Files of </source>
+                <source>files of </source>
                 <target>Dateien in</target>
             </trans-unit>
 
             <trans-unit id="files.choose">
-                <source>Choose Files</source>
+                <source>choose files</source>
                 <target>Dateien auswählen</target>
             </trans-unit>
 
-            <trans-unit id="upload">
-                <source>Upload</source>
-                <target>Hochladen</target>
-            </trans-unit>
-
-            <trans-unit id="folder.new">
-                <source>new Folder</source>
-                <target>Neuen Ordner anlegen</target>
-            </trans-unit>
-
             <trans-unit id="files.create">
-                <source>Create a folder</source>
+                <source>create a folder</source>
                 <target>Neuen Ordner anlegen</target>
+            </trans-unit>
+
+            <trans-unit id="workspace">
+               <source>workspace</source>
+                <target>Arbeitsbereich</target>
             </trans-unit>
 
             <trans-unit id="workspaces">
-                <source>Workspaces</source>
+                <source>workspaces</source>
                 <target>Arbeitsbereiche</target>
             </trans-unit>
 
-             <trans-unit id="workspaces">
+            <trans-unit id="documents">
+                <source>documents</source>
+                <target>Dokumente</target>
+            </trans-unit>
+
+             <trans-unit id="workspace.open">
                  <source>open workspace</source>
                  <target>Arbeitsbereich öffnen</target>
              </trans-unit>
 
             <trans-unit id="workspace.save">
-                <source>Save Workspace</source>
-                <target>Arbeitsbereich speichern</target>
+                <source>save workspace</source>
+                <target>Speichern</target>
             </trans-unit>
 
             <trans-unit id="workspace.create">
@@ -109,13 +154,25 @@
 
             <trans-unit id="workspace.edit">
                 <source>edit workspace</source>
-                <target>Arbeitsbereich bearbeiten</target>
+                <target>Bearbeiten</target>
             </trans-unit>
 
              <trans-unit id="workspace.delete">
                 <source>delete workspace</source>
                 <target>Arbeitsbereich löschen</target>
              </trans-unit>
+
+             <trans-unit id="workspace.delete_question">
+                <source>delete workspace?</source>
+                <target>Arbeitsbereich wirklich löschen?</target>
+             </trans-unit>
+
+             <trans-unit id="workspace.delete_hinweis">
+                <source>The workspace and all files and folders within will be deleted</source>
+                <target>Der Arbeitsbereich mit allen Ordnern und Dateien wird gelöscht.</target>
+             </trans-unit>
+
+
 
         </body>
 	</file>

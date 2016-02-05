@@ -1,26 +1,26 @@
 <f:layout name="Bootstrap" />
 
 <f:section name="Title">
-	<f:translate>new File</f:translate>
+	{f:translate(value:'file')}
 </f:section>
 
 <f:section name="Content">
 	<div class="panel panel-default">
 		<div class="panel-heading">
-			<f:translate>Update file</f:translate>
+			{f:translate(value:'update file')}
 		</div>
 		<div class="panel-body">
 			<f:form action="update" name="file" object="{file}" enctype="multipart/form-data">
 				<div class="form-group">
 					<label for="filename" class="col-sm-2 control-label">
-						<f:translate>Filename</f:translate>
+						{f:translate(value:'filename')}
 					</label>
 					<div class="col-sm-10">
 						<f:form.textfield property="name" class="form-control" id="filename"  />
 					</div>
 				</div>
 				<f:form.button class="btn btn-default">
-					<f:translate>Update file</f:translate>
+					{f:translate(value:'save')}
 				</f:form.button>
 			</f:form>
 		</div>

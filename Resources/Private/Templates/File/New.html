@@ -1,20 +1,20 @@
 <f:layout name="Bootstrap" />
 
 <f:section name="Title">
-	<f:translate>new File</f:translate>
+	{f:translate(value:'new file')}
 </f:section>
 
 <f:section name="Content">
 	<div class="panel panel-default">
 		<div class="panel-heading">
-			<f:translate>Create a file</f:translate>
+			{f:translate(value:'new file')}
 		</div>
 		<div class="panel-body">
 			<f:form action="create" name="file" object="file" enctype="multipart/form-data">
 				<f:form.hidden property="parentFolder" value="{parentFolder}" />
 				<f:render partial="File/Form" arguments="{file:file, parentFolder:parentFolder}" />
 				<f:form.button class="btn btn-default">
-					<f:translate>Create file</f:translate>
+					{f:translate(value:'create a file')}
 				</f:form.button>
 			</f:form>
 		</div>

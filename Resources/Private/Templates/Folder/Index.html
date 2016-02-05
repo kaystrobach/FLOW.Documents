@@ -1,7 +1,7 @@
 <f:layout name="Bootstrap" />
 
 <f:section name="Title">
-	<f:translate>Folder</f:translate> {folder.name}
+	{f:translate(value:'folder')} {folder.name}
 </f:section>
 
 <f:section name="Content">
@@ -12,7 +12,7 @@
 				<thead>
 				<tr>
 					<th>
-						<f:translate>Folders in </f:translate>
+						{f:translate(value:'folder in')}
 						<f:if condition="{folder.parentFolder}">
 							<f:then>
 								<f:link.action action="index" arguments="{folder:folder.parentFolder}">
@@ -43,10 +43,10 @@
 							</f:link.action>
 						</td>
 						<td>
-							<f:link.action action="edit" arguments="{folder:subfolder}" class="btn btn-link pull-right">
+							<f:link.action action="edit" arguments="{folder:subfolder}" class="btn btn-link pull-right" title="{f:translate(value:'edit')}">
 								<span class="glyphicon glyphicon-pencil"></span>
 							</f:link.action>
-							<a href="" class="btn btn-link pull-right" data-toggle="modal" data-target="#delete-{subfolder -> f:format.identifier()}">
+							<a href="" class="btn btn-link pull-right" data-toggle="modal" title="{f:translate(value:'delete')}" data-target="#delete-{subfolder -> f:format.identifier()}">
 								<span class="glyphicon glyphicon-trash"></span>
 							</a>
 						</td>
@@ -59,7 +59,7 @@
 				<thead>
 				<tr>
 					<th>
-						<f:translate>Files of </f:translate> {folder.name}
+						{f:translate(value:'files in')} {folder.name}
 					</th>
 					<th>
 						<!-- Button trigger modal -->
@@ -78,10 +78,10 @@
 							</f:link.action>
 						</td>
 						<td>
-							<f:link.action action="edit" controller="file" arguments="{file:file}" class="btn btn-link pull-right">
+							<f:link.action action="edit" controller="file" arguments="{file:file}" class="btn btn-link pull-right" title="{f:translate(value:'edit')}">
 								<span class="glyphicon glyphicon-pencil"></span>
 							</f:link.action>
-							<a href="" class="btn btn-link pull-right" data-toggle="modal" data-target="#delete-{file -> f:format.identifier()}">
+							<a href="" class="btn btn-link pull-right" data-toggle="modal" data-target="#delete-{file -> f:format.identifier()}" title="{f:translate(value:'delete')}">
 								<span class="glyphicon glyphicon-trash"></span>
 							</a>
 						</td>
@@ -104,13 +104,13 @@
 					<div class="modal-header">
 						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 						<h4 class="modal-title" id="myModalLabel">
-							<f:translate>Choose Files</f:translate>
+							{f:translate(value:'choose files')}
 						</h4>
 					</div>
 					<div class="modal-body">
 						<div class="form-group">
 							<label for="file.upload" class="col-sm-4">
-								<f:translate>Choose Files</f:translate>
+								{f:translate(value:'choose files')}
 							</label>
 							<div class="col-sm-8">
 								<input type="file" name="file[]"  multiple class="form-control" id="file.upload">
@@ -119,10 +119,10 @@
 
 					</div>
 					<div class="modal-footer">
-						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+						<button type="button" class="btn btn-default" data-dismiss="modal">Schließen</button>
 						<f:form.button class="btn btn-success">
 							<span class="glyphicon glyphicon-cloud-upload"></span>
-							<f:translate>Upload</f:translate>
+							{f:translate(value:'upload')}
 						</f:form.button>
 					</div>
 				</div>
@@ -138,16 +138,16 @@
 					<div class="modal-content">
 						<div class="modal-header">
 							<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-							<h4 class="modal-title" ><f:translate>Delete</f:translate> {subfolder.name}?</h4>
+							<h4 class="modal-title" >{f:translate(value:'delete')} {subfolder.name}?</h4>
 						</div>
 						<div class="modal-body">
-							<f:translate>The folder and all subfolders will be deleted.</f:translate>
+							{f:translate(value:'The folder and all subfolders will be deleted.')}
 						</div>
 						<div class="modal-footer">
-							<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+							<button type="button" class="btn btn-default" data-dismiss="modal">Schließen</button>
 							<button type="submit" class="btn btn-primary">
 								<span class="glyphicon glyphicon-trash"></span>
-								<f:translate>Delete</f:translate>
+								{f:translate(value:'delete')}
 							</button>
 						</div>
 					</div>
@@ -164,16 +164,16 @@
 					<div class="modal-content">
 						<div class="modal-header">
 							<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-							<h4 class="modal-title" ><f:translate>Delete</f:translate> {file.name}?</h4>
+							<h4 class="modal-title"> {file.name} {f:translate(value:'delete')}?</h4>
 						</div>
 						<div class="modal-body">
-							<f:translate>The file will be deleted.</f:translate>
+							{f:translate(value:'The file will be deleted.')}
 						</div>
 						<div class="modal-footer">
-							<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+							<button type="button" class="btn btn-default" data-dismiss="modal">Schließen</button>
 							<button type="submit" class="btn btn-primary">
 								<span class="glyphicon glyphicon-trash"></span>
-								<f:translate>Delete</f:translate>
+								{f:translate(value:'delete')}
 							</button>
 						</div>
 					</div>

@@ -1,19 +1,27 @@
 <f:layout name="Bootstrap" />
 
 <f:section name="Title">
-	<f:translate>Edit Workspaces</f:translate> {workspace.name}
+	{f:translate(value:'workspace')} {workspace.name}
+</f:section>
+
+<f:section name="NavigationBar">
+<ul class="nav navbar-nav">
+	<li>
+		<f:link.action action="index" title="zurück"><span class="glyphicon glyphicon-chevron-left"></span> zurück</f:link.action>
+	</li>
+</ul>
 </f:section>
 
 <f:section name="Content">
 	<div class="panel panel-default">
 		<div class="panel-heading">
-			<f:translate>Edit Workspace</f:translate> {workspace.name}
+			{f:translate(value:'edit workspace')}
 		</div>
 		<div class="panel-body">
 			<f:form action="update" name="workspace" object="{workspace}">
 				<f:render partial="Workspace/Form" arguments="{workspace:workspace}"/>
 				<f:form.button class="btn btn-default">
-					<f:translate>Save Workspace</f:translate>
+					{f:translate(value:'save workspace')}
 				</f:form.button>
 			</f:form>
 		</div>
