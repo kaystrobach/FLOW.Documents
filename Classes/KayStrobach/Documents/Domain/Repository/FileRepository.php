@@ -16,14 +16,15 @@ class FileRepository extends Repository {
 
 	// add customized methods here
 
-	/**
-	 * @param string $extension
-	 * @return \TYPO3\Flow\Persistence\QueryResultInterface
-	 */
+    /**
+     * @param string $extension
+     * @return \TYPO3\Flow\Persistence\QueryResultInterface
+     * @throws \TYPO3\Flow\Persistence\Exception\InvalidQueryException
+     */
 	public function findByExtension($extension) {
 		$query = $this->createQuery();
 		$query->matching(
-			$query->equals('originalResource.fileExtension', $extension)
+			$query->like('originalResource.filename', '%.' . $extension)
 		);
 		return $query->execute();
 	}
