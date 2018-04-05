@@ -11,7 +11,9 @@ namespace KayStrobach\Documents\Controller;
 use KayStrobach\Documents\Domain\Model\File;
 use KayStrobach\Documents\Domain\Model\Folder;
 use TYPO3\Flow\Annotations as Flow;
+use TYPO3\Flow\Error\Message;
 use TYPO3\Flow\Mvc\Exception\StopActionException;
+use TYPO3\Flow\Resource\Exception as ResourceNotFoundException;
 
 class FileController extends \TYPO3\Flow\Mvc\Controller\ActionController {
 
@@ -78,16 +80,35 @@ class FileController extends \TYPO3\Flow\Mvc\Controller\ActionController {
 		);
 	}
 
-	/**
-	 * @param File $file
-	 * @return string
-	 */
+    /**
+     * @param File $file
+     * @return string
+     * @throws \InvalidArgumentException
+     * @throws StopActionException
+     */
 	public function downloadAction(File $file) {
-		$this->response->setHeader('Content-Type', $file->getOriginalResource()->getMediaType());
-		$this->response->setHeader('Content-Length', @filesize('resource://' . $file->getOriginalResource()->getResourcePointer()->getHash()));
+        $this->response->setHeader('Content-Type', $file->getOriginalResource()->getMediaType());
+		$this->response->setHeader('Content-Length', $file->getOriginalResource()->getFileSize());
 		$this->response->setHeader('Content-Disposition', 'inline; filename="' . $file->getName() . '"');
-		$buffer = @file_get_contents('resource://' . $file->getOriginalResource()->getResourcePointer());
-		return $buffer;
+
+        try {
+            $tempCopyPath = $file->getOriginalResource()->createTemporaryLocalCopy();
+            $buffer = @file_get_contents($tempCopyPath);
+            unlink($tempCopyPath);
+            return $buffer;
+        } catch (ResourceNotFoundException $exception) {
+            $this->systemLogger->logException($exception);
+            $this->addFlashMessage(
+                $exception->getMessage(),
+                '',
+                Message::SEVERITY_ERROR
+            );
+        }
+        $this->forwardToReferringRequest();
+        $this->redirect(
+            'index',
+            'Workspace'
+        );
 	}
 
 	/**
