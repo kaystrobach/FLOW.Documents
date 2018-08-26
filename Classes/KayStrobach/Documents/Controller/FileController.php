@@ -131,23 +131,19 @@ class FileController extends \TYPO3\Flow\Mvc\Controller\ActionController {
 		if (isset($_FILES) && !empty($_FILES)) {
 			$count = 0;
 			foreach ($_FILES as $file) {
-				foreach ($file['name'] as $filename) {
-					if ($file['name'][$count] != "") {
-
-						$resource = array(
-							'tmp_name' => $file['tmp_name'][$count],
-							'name'     => $file['name'][$count]
-						);
-						/** @var \TYPO3\Flow\Resource\Resource $newResource */
-						$newResource = $this->resourceManager->importUploadedResource($resource);
-
-						$newFile = new File();
-						$newFile->setParentFolder($folder);
-						$newFile->setOriginalResource($newResource);
-						$newFile->setName($newResource->getFilename());
-						$this->fileRepository->add($newFile);
-						$count++;
-					}
+				if ($file['name'][$count] != "") {
+					$resource = array(
+						'tmp_name' => $file['tmp_name'][$count],
+						'name'     => $file['name'][$count]
+					);
+					/** @var \TYPO3\Flow\Resource\Resource $newResource */
+					$newResource = $this->resourceManager->importUploadedResource($resource);
+					$newFile = new File();
+					$newFile->setParentFolder($folder);
+					$newFile->setOriginalResource($newResource);
+					$newFile->setName($newResource->getFilename());
+					$this->fileRepository->add($newFile);
+					$count++;
 				}
 			}
 		}
