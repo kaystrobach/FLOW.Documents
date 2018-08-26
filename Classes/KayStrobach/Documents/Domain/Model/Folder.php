@@ -120,11 +120,7 @@ class Folder extends FileSystemNode{
 	 */
 	public function getTopMostParentFolder() {
 		/** @var Folder $parentFolder */
-		if($this->getParentFolder() === NULL) {
-			$folder = $this;
-		} else {
-			$folder = $this->getParentFolder();
-		}
+		$folder = $this;
 		while($folder->getParentFolder() !== NULL) {
 			$folder = $folder->getParentFolder();
 		}
