@@ -78,8 +78,7 @@ class FolderController extends \TYPO3\Flow\Mvc\Controller\ActionController {
 					'folder' => $folder->getParentFolder()
 				)
 			);
-		} else {
-			$this->redirect('index', 'workspace');
 		}
+		$this->redirect('index', 'workspace');
 	}
 }
