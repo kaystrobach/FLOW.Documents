@@ -13,7 +13,7 @@ use KayStrobach\Documents\Domain\Model\Folder;
 use TYPO3\Flow\Annotations as Flow;
 use TYPO3\Flow\Error\Message;
 use TYPO3\Flow\Mvc\Exception\StopActionException;
-use TYPO3\Flow\Resource\Exception as ResourceNotFoundException;
+use TYPO3\Flow\ResourceManagement\Exception as ResourceNotFoundException;
 
 class FileController extends \TYPO3\Flow\Mvc\Controller\ActionController {
 
@@ -25,7 +25,7 @@ class FileController extends \TYPO3\Flow\Mvc\Controller\ActionController {
 
 	/**
 	 * @Flow\Inject
-	 * @var \TYPO3\Flow\Resource\ResourceManager
+	 * @var \TYPO3\Flow\ResourceManagement\ResourceManager
 	 */
 	protected $resourceManager;
 
@@ -136,7 +136,7 @@ class FileController extends \TYPO3\Flow\Mvc\Controller\ActionController {
 						'tmp_name' => $file['tmp_name'][$count],
 						'name'     => $file['name'][$count]
 					);
-					/** @var \TYPO3\Flow\Resource\Resource $newResource */
+					/** @var \TYPO3\Flow\ResourceManagement\PersistentResource $newResource */
 					$newResource = $this->resourceManager->importUploadedResource($resource);
 					$newFile = new File();
 					$newFile->setParentFolder($folder);

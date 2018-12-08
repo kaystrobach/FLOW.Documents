@@ -15,7 +15,7 @@ use Doctrine\ORM\Mapping as ORM;
 class File extends FileSystemNode {
 
 	/**
-	 * @var \TYPO3\Flow\Resource\Resource
+	 * @var \TYPO3\Flow\ResourceManagement\PersistentResource
 	 * @ORM\OneToOne(cascade={"all"})
 	 */
 	protected $originalResource;
@@ -27,14 +27,14 @@ class File extends FileSystemNode {
 	protected $parentFolder;
 
 	/**
-	 * @return \TYPO3\Flow\Resource\Resource
+	 * @return \TYPO3\Flow\ResourceManagement\PersistentResource
 	 */
 	public function getOriginalResource() {
 		return $this->originalResource;
 	}
 
 	/**
-	 * @param \TYPO3\Flow\Resource\Resource $originalResource
+	 * @param \TYPO3\Flow\ResourceManagement\PersistentResource $originalResource
 	 */
 	public function setOriginalResource($originalResource) {
 		$this->originalResource = $originalResource;
