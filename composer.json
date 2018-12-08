@@ -1,10 +1,10 @@
 {
     "name": "kaystrobach/documents",
-    "type": "typo3-flow-package",
+    "type": "neos-package",
     "description": null,
     "version": null,
     "require": {
-        "typo3/flow": "*"
+        "neos/flow": "~4.0.0"
     },
     "autoload": {
         "psr-0": {
