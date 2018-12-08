@@ -11,7 +11,7 @@ namespace KayStrobach\Documents\Controller;
 use KayStrobach\Documents\Domain\Model\File;
 use KayStrobach\Documents\Domain\Model\Folder;
 use Neos\Flow\Annotations as Flow;
-use Neos\Flow\Error\Message;
+use Neos\Error\Messages\Message;
 use Neos\Flow\Mvc\Exception\StopActionException;
 use Neos\Flow\ResourceManagement\Exception as ResourceNotFoundException;
 
