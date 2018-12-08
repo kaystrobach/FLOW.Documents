@@ -9,9 +9,9 @@ namespace KayStrobach\Documents\Controller;
 use KayStrobach\Documents\Domain\Model\File;
 use KayStrobach\Documents\Domain\Model\Folder;
 use KayStrobach\Documents\Domain\Model\Workspace;
-use TYPO3\Flow\Annotations as Flow;
+use Neos\Flow\Annotations as Flow;
 
-class WorkspaceController extends \TYPO3\Flow\Mvc\Controller\ActionController {
+class WorkspaceController extends \Neos\Flow\Mvc\Controller\ActionController {
 
 	/**
 	 * @Flow\Inject
@@ -41,7 +41,7 @@ class WorkspaceController extends \TYPO3\Flow\Mvc\Controller\ActionController {
 	 * creates a new workspace in the repository
 	 *
 	 * @param Workspace $workspace
-	 * @throws \TYPO3\Flow\Persistence\Exception\IllegalObjectTypeException
+	 * @throws \Neos\Flow\Persistence\Exception\IllegalObjectTypeException
 	 */
 	public function createAction(Workspace $workspace) {
 		$folder = new Folder();
@@ -65,7 +65,7 @@ class WorkspaceController extends \TYPO3\Flow\Mvc\Controller\ActionController {
 	 * save an updated workspace
 	 *
 	 * @param Workspace $workspace
-	 * @throws \TYPO3\Flow\Persistence\Exception\IllegalObjectTypeException
+	 * @throws \Neos\Flow\Persistence\Exception\IllegalObjectTypeException
 	 */
 	public function updateAction(Workspace $workspace) {
 		$this->workspaceRepository->update($workspace);
@@ -74,7 +74,7 @@ class WorkspaceController extends \TYPO3\Flow\Mvc\Controller\ActionController {
 
 	/**
 	 * @param Workspace $workspace
-	 * @throws \TYPO3\Flow\Persistence\Exception\IllegalObjectTypeException
+	 * @throws \Neos\Flow\Persistence\Exception\IllegalObjectTypeException
 	 */
 	public function removeAction(Workspace $workspace) {
 		$this->workspaceRepository->remove($workspace);

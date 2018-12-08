@@ -6,8 +6,8 @@ namespace KayStrobach\Documents\Domain\Repository;
  *                                                                        *
  *                                                                        */
 
-use TYPO3\Flow\Annotations as Flow;
-use TYPO3\Flow\Persistence\Repository;
+use Neos\Flow\Annotations as Flow;
+use Neos\Flow\Persistence\Repository;
 
 /**
  * @Flow\Scope("singleton")
@@ -18,8 +18,8 @@ class FileRepository extends Repository {
 
     /**
      * @param string $extension
-     * @return \TYPO3\Flow\Persistence\QueryResultInterface
-     * @throws \TYPO3\Flow\Persistence\Exception\InvalidQueryException
+     * @return \Neos\Flow\Persistence\QueryResultInterface
+     * @throws \Neos\Flow\Persistence\Exception\InvalidQueryException
      */
 	public function findByExtension($extension) {
 		$query = $this->createQuery();

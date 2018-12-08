@@ -9,7 +9,7 @@ namespace KayStrobach\Documents\Tests\Unit\Domain\Model;
 /**
  * Testcase for File
  */
-class FileTest extends \TYPO3\Flow\Tests\UnitTestCase {
+class FileTest extends \Neos\Flow\Tests\UnitTestCase {
 
 	/**
 	 * @test

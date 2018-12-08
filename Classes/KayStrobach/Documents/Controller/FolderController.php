@@ -10,9 +10,9 @@ namespace KayStrobach\Documents\Controller;
 
 use KayStrobach\Documents\Domain\Model\File;
 use KayStrobach\Documents\Domain\Model\Folder;
-use TYPO3\Flow\Annotations as Flow;
+use Neos\Flow\Annotations as Flow;
 
-class FolderController extends \TYPO3\Flow\Mvc\Controller\ActionController {
+class FolderController extends \Neos\Flow\Mvc\Controller\ActionController {
 	/**
 	 * @Flow\Inject
 	 * @var \KayStrobach\Documents\Domain\Repository\FolderRepository
@@ -38,7 +38,7 @@ class FolderController extends \TYPO3\Flow\Mvc\Controller\ActionController {
 
 	/**
 	 * @param Folder $folder
-	 * @throws \TYPO3\Flow\Persistence\Exception\IllegalObjectTypeException
+	 * @throws \Neos\Flow\Persistence\Exception\IllegalObjectTypeException
 	 */
 	public function createAction(Folder $folder) {
 		$this->folderRepository->add($folder);

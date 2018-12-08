@@ -8,8 +8,8 @@ namespace KayStrobach\Documents\Domain\Repository;
 
 use KayStrobach\Documents\Domain\Model\Folder;
 use KayStrobach\Documents\Domain\Model\Workspace;
-use TYPO3\Flow\Annotations as Flow;
-use TYPO3\Flow\Persistence\Repository;
+use Neos\Flow\Annotations as Flow;
+use Neos\Flow\Persistence\Repository;
 
 /**
  * @Flow\Scope("singleton")

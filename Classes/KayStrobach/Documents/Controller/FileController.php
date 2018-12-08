@@ -10,12 +10,12 @@ namespace KayStrobach\Documents\Controller;
 
 use KayStrobach\Documents\Domain\Model\File;
 use KayStrobach\Documents\Domain\Model\Folder;
-use TYPO3\Flow\Annotations as Flow;
-use TYPO3\Flow\Error\Message;
-use TYPO3\Flow\Mvc\Exception\StopActionException;
-use TYPO3\Flow\ResourceManagement\Exception as ResourceNotFoundException;
+use Neos\Flow\Annotations as Flow;
+use Neos\Flow\Error\Message;
+use Neos\Flow\Mvc\Exception\StopActionException;
+use Neos\Flow\ResourceManagement\Exception as ResourceNotFoundException;
 
-class FileController extends \TYPO3\Flow\Mvc\Controller\ActionController {
+class FileController extends \Neos\Flow\Mvc\Controller\ActionController {
 
 	/**
 	 * @Flow\Inject
@@ -25,7 +25,7 @@ class FileController extends \TYPO3\Flow\Mvc\Controller\ActionController {
 
 	/**
 	 * @Flow\Inject
-	 * @var \TYPO3\Flow\ResourceManagement\ResourceManager
+	 * @var \Neos\Flow\ResourceManagement\ResourceManager
 	 */
 	protected $resourceManager;
 
@@ -115,7 +115,7 @@ class FileController extends \TYPO3\Flow\Mvc\Controller\ActionController {
 	 * removes a file
 	 *
 	 * @param File $file
-	 * @throws \TYPO3\Flow\Persistence\Exception\IllegalObjectTypeException
+	 * @throws \Neos\Flow\Persistence\Exception\IllegalObjectTypeException
 	 */
 	public function removeAction(File $file) {
 		$this->fileRepository->remove($file);
@@ -136,7 +136,7 @@ class FileController extends \TYPO3\Flow\Mvc\Controller\ActionController {
 						'tmp_name' => $file['tmp_name'][$count],
 						'name'     => $file['name'][$count]
 					);
-					/** @var \TYPO3\Flow\ResourceManagement\PersistentResource $newResource */
+					/** @var \Neos\Flow\ResourceManagement\PersistentResource $newResource */
 					$newResource = $this->resourceManager->importUploadedResource($resource);
 					$newFile = new File();
 					$newFile->setParentFolder($folder);
