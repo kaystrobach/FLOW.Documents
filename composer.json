@@ -4,7 +4,7 @@
     "description": null,
     "version": null,
     "require": {
-        "neos/flow": "~4.0.0"
+        "neos/flow": "~4.3.0"
     },
     "autoload": {
         "psr-0": {
