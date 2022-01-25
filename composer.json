@@ -1,13 +1,12 @@
 {
     "name": "kaystrobach/documents",
     "type": "neos-package",
-    "description": null,
-    "version": null,
+    "description": "Document management for flow",
     "require": {
-        "neos/flow": "~4.3.0 || ~5.0 || ~6.0"
+        "neos/flow": "~6.0"
     },
     "autoload": {
-        "psr-0": {
+        "psr-4": {
             "KayStrobach\\Documents": "Classes"
         }
     },
