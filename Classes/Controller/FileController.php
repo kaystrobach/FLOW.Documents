@@ -14,6 +14,7 @@ use KayStrobach\Documents\Domain\Model\Folder;
 use KayStrobach\Documents\Domain\Repository\FileRepository;
 use Neos\Flow\Annotations as Flow;
 use Neos\Error\Messages\Message;
+use Neos\Flow\Http\Component\SetHeaderComponent;
 use Neos\Flow\Mvc\Controller\ActionController;
 use Neos\Flow\Mvc\Exception\StopActionException;
 use Neos\Flow\Persistence\Exception\IllegalObjectTypeException;
@@ -99,9 +100,24 @@ class FileController extends ActionController
      */
     public function downloadAction(File $file)
     {
-        $this->response->setHeader('Content-Type', $file->getOriginalResource()->getMediaType());
-        $this->response->setHeader('Content-Length', $file->getOriginalResource()->getFileSize());
-        $this->response->setHeader('Content-Disposition', 'inline; filename="' . $file->getName() . '"');
+        $response = $this->controllerContext->getResponse();
+        $response->setContentType($file->getOriginalResource()->getMediaType());
+
+        $response->setComponentParameter(
+            SetHeaderComponent::class,
+            'Content-Length',
+            $file->getOriginalResource()->getFileSize()
+        );
+        $response->setComponentParameter(
+            SetHeaderComponent::class,
+            'Content-Disposition',
+            'attachment;filename="' . $file->getName() . '"'
+        );
+        $response->setComponentParameter(
+            SetHeaderComponent::class,
+            'Cache-Control',
+            'max-age=0'
+        );
 
         try {
             $tempCopyPath = $file->getOriginalResource()->createTemporaryLocalCopy();
