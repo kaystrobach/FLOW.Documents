@@ -10,75 +10,85 @@ namespace KayStrobach\Documents\Controller;
 
 use KayStrobach\Documents\Domain\Model\File;
 use KayStrobach\Documents\Domain\Model\Folder;
+use KayStrobach\Documents\Domain\Repository\FolderRepository;
 use Neos\Flow\Annotations as Flow;
+use Neos\Flow\Mvc\Controller\ActionController;
+use Neos\Flow\Persistence\Exception\IllegalObjectTypeException;
 
-class FolderController extends \Neos\Flow\Mvc\Controller\ActionController {
-	/**
-	 * @Flow\Inject
-	 * @var \KayStrobach\Documents\Domain\Repository\FolderRepository
-	 */
-	protected $folderRepository;
+class FolderController extends ActionController
+{
+    /**
+     * @Flow\Inject
+     * @var FolderRepository
+     */
+    protected $folderRepository;
 
-	/**
-	 * @param Folder $folder
-	 */
-	public function indexAction(Folder $folder) {
-		$this->view->assign(
-				'folder',
-				$folder
-		);
-	}
+    /**
+     * @param Folder $folder
+     */
+    public function indexAction(Folder $folder)
+    {
+        $this->view->assign(
+            'folder',
+            $folder
+        );
+    }
 
-	/**
-	 * @param Folder $parentFolder
-	 */
-	public function newAction(Folder $parentFolder = NULL) {
-		$this->view->assign('parentFolder', $parentFolder);
-	}
+    /**
+     * @param Folder $parentFolder
+     */
+    public function newAction(Folder $parentFolder = null)
+    {
+        $this->view->assign('parentFolder', $parentFolder);
+    }
 
-	/**
-	 * @param Folder $folder
-	 * @throws \Neos\Flow\Persistence\Exception\IllegalObjectTypeException
-	 */
-	public function createAction(Folder $folder) {
-		$this->folderRepository->add($folder);
-		$this->redirect('index', NULL, NULL, array('folder' => $folder->getParentFolder()));
-	}
+    /**
+     * @param Folder $folder
+     * @throws IllegalObjectTypeException
+     */
+    public function createAction(Folder $folder)
+    {
+        $this->folderRepository->add($folder);
+        $this->redirect('index', null, null, array('folder' => $folder->getParentFolder()));
+    }
 
-	/**
-	 * @param Folder $folder
-	 */
-	public function editAction(Folder $folder) {
-		$this->view->assign('folder', $folder);
-	}
+    /**
+     * @param Folder $folder
+     */
+    public function editAction(Folder $folder)
+    {
+        $this->view->assign('folder', $folder);
+    }
 
-	/**
-	 * @param Folder $folder
-	 */
-	public function updateAction(Folder $folder) {
-		$this->folderRepository->update($folder);
-		$this->redirect(
-			'index',
-			NULL,
-			NULL,
-			array(
-				'folder' => $folder->getParentFolder()
-			)
-		);
-	}
+    /**
+     * @param Folder $folder
+     */
+    public function updateAction(Folder $folder)
+    {
+        $this->folderRepository->update($folder);
+        $this->redirect(
+            'index',
+            null,
+            null,
+            array(
+                'folder' => $folder->getParentFolder()
+            )
+        );
+    }
 
-	public function removeAction(Folder $folder) {
-		$this->folderRepository->remove($folder);
-		if($folder->getParentFolder() !== NULL) {
-			$this->redirect(
-				'index',
-				NULL,
-				NULL,
-				array(
-					'folder' => $folder->getParentFolder()
-				)
-			);
-		}
-		$this->redirect('index', 'workspace');
-	}
+    public function removeAction(Folder $folder)
+    {
+        $this->folderRepository->remove($folder);
+        if ($folder->getParentFolder() !== null) {
+            $this->redirect(
+                'index',
+                null,
+                null,
+                array(
+                    'folder' => $folder->getParentFolder()
+                )
+            );
+        }
+        $this->redirect('index', 'workspace');
+    }
 }

@@ -1,4 +1,5 @@
 <?php
+
 namespace KayStrobach\Documents\Domain\Repository;
 
 /*                                                                        *
@@ -14,16 +15,18 @@ use Neos\Flow\Persistence\Repository;
 /**
  * @Flow\Scope("singleton")
  */
-class WorkspaceRepository extends Repository {
+class WorkspaceRepository extends Repository
+{
 
-	// add customized methods here
+    // add customized methods here
 
 
     /**
      * @param Folder $folder
      * @return Workspace
      */
-    public function findByRootFolder(Folder $folder) {
+    public function findByRootFolder(Folder $folder)
+    {
         $query = $this->createQuery();
         $query->matching(
             $query->equals(

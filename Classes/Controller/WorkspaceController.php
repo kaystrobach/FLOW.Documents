@@ -1,4 +1,5 @@
 <?php
+
 namespace KayStrobach\Documents\Controller;
 
 /*                                                                        *
@@ -9,75 +10,85 @@ namespace KayStrobach\Documents\Controller;
 use KayStrobach\Documents\Domain\Model\File;
 use KayStrobach\Documents\Domain\Model\Folder;
 use KayStrobach\Documents\Domain\Model\Workspace;
+use KayStrobach\Documents\Domain\Repository\WorkspaceRepository;
 use Neos\Flow\Annotations as Flow;
+use Neos\Flow\Mvc\Controller\ActionController;
+use Neos\Flow\Persistence\Exception\IllegalObjectTypeException;
 
-class WorkspaceController extends \Neos\Flow\Mvc\Controller\ActionController {
+class WorkspaceController extends ActionController
+{
 
-	/**
-	 * @Flow\Inject
-	 * @var \KayStrobach\Documents\Domain\Repository\WorkspaceRepository
-	 */
-	protected $workspaceRepository;
+    /**
+     * @Flow\Inject
+     * @var WorkspaceRepository
+     */
+    protected $workspaceRepository;
 
-	/**
-	 * @return void
-	 */
-	public function indexAction() {
-		$this->view->assign(
-			'workspaces',
-			$this->workspaceRepository->findAll()
-		);
-	}
+    /**
+     * @return void
+     */
+    public function indexAction()
+    {
+        $this->view->assign(
+            'workspaces',
+            $this->workspaceRepository->findAll()
+        );
+    }
 
-	/**
-	 * form for creating a new workspace
-	 */
-	public function newAction() {
+    /**
+     * form for creating a new workspace
+     */
+    public function newAction()
+    {
 
-	}
-
-
-	/**
-	 * creates a new workspace in the repository
-	 *
-	 * @param Workspace $workspace
-	 * @throws \Neos\Flow\Persistence\Exception\IllegalObjectTypeException
-	 */
-	public function createAction(Workspace $workspace) {
-		$folder = new Folder();
-		$folder->setName('Workspace Root ' . $workspace->getName());
-		$workspace->setFolder($folder);
-		$this->workspaceRepository->add($workspace);
-		$this->redirect('index');
-	}
+    }
 
 
-	/**
-	 * form for updating a workspace
-	 *
-	 * @param Workspace $workspace
-	 */
-	public function editAction(Workspace $workspace) {
-		$this->view->assign('workspace', $workspace);
-	}
+    /**
+     * creates a new workspace in the repository
+     *
+     * @param Workspace $workspace
+     * @throws IllegalObjectTypeException
+     */
+    public function createAction(Workspace $workspace)
+    {
+        $folder = new Folder();
+        $folder->setName('Workspace Root ' . $workspace->getName());
+        $workspace->setFolder($folder);
+        $this->workspaceRepository->add($workspace);
+        $this->redirect('index');
+    }
 
-	/**
-	 * save an updated workspace
-	 *
-	 * @param Workspace $workspace
-	 * @throws \Neos\Flow\Persistence\Exception\IllegalObjectTypeException
-	 */
-	public function updateAction(Workspace $workspace) {
-		$this->workspaceRepository->update($workspace);
-		$this->redirect('index');
-	}
 
-	/**
-	 * @param Workspace $workspace
-	 * @throws \Neos\Flow\Persistence\Exception\IllegalObjectTypeException
-	 */
-	public function removeAction(Workspace $workspace) {
-		$this->workspaceRepository->remove($workspace);
-		$this->redirect('index');
-	}
+    /**
+     * form for updating a workspace
+     *
+     * @param Workspace $workspace
+     */
+    public function editAction(Workspace $workspace)
+    {
+        $this->view->assign('workspace', $workspace);
+    }
+
+    /**
+     * save an updated workspace
+     *
+     * @param Workspace $workspace
+     * @throws IllegalObjectTypeException
+     */
+    public function updateAction(Workspace $workspace)
+    {
+        $this->workspaceRepository->update($workspace);
+        $this->redirect('index');
+    }
+
+    /**
+     * @param Workspace $workspace
+     * @throws IllegalObjectTypeException
+     */
+    public function removeAction(Workspace $workspace)
+    {
+        $this->workspaceRepository->remove($workspace);
+        $this->redirect('index');
+    }
 }

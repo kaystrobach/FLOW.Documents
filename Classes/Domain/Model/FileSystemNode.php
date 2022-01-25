@@ -1,4 +1,5 @@
 <?php
+
 namespace KayStrobach\Documents\Domain\Model;
 
 /*                                                                        *
@@ -9,27 +10,30 @@ namespace KayStrobach\Documents\Domain\Model;
 use Neos\Flow\Annotations as Flow;
 use Doctrine\ORM\Mapping as ORM;
 
-abstract class FileSystemNode {
+abstract class FileSystemNode
+{
 
-	/**
-	 * name of the FSNode
-	 *
-	 * @var string
-	 */
-	protected $name;
+    /**
+     * name of the FSNode
+     *
+     * @var string
+     */
+    protected $name;
 
-	/**
-	 * @return string
-	 */
-	public function getName() {
-		return $this->name;
-	}
+    /**
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
 
-	/**
-	 * @param string $name
-	 */
-	public function setName($name) {
-		$this->name = $name;
-	}
+    /**
+     * @param string $name
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+    }
 
 }

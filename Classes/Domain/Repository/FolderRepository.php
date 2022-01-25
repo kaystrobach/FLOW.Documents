@@ -1,4 +1,5 @@
 <?php
+
 namespace KayStrobach\Documents\Domain\Repository;
 
 /*                                                                        *
@@ -12,8 +13,9 @@ use Neos\Flow\Persistence\Repository;
 /**
  * @Flow\Scope("singleton")
  */
-class FolderRepository extends Repository {
+class FolderRepository extends Repository
+{
 
-	// add customized methods here
+    // add customized methods here
 
 }

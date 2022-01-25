@@ -1,4 +1,5 @@
 <?php
+
 namespace KayStrobach\Documents\Domain\Model;
 
 /*                                                                        *
@@ -8,51 +9,57 @@ namespace KayStrobach\Documents\Domain\Model;
 
 use Neos\Flow\Annotations as Flow;
 use Doctrine\ORM\Mapping as ORM;
+use Neos\Flow\ResourceManagement\PersistentResource;
 
 /**
  * @Flow\Entity
  */
-class File extends FileSystemNode {
+class File extends FileSystemNode
+{
 
-	/**
-	 * @var \Neos\Flow\ResourceManagement\PersistentResource
-	 * @ORM\OneToOne(cascade={"all"})
-	 */
-	protected $originalResource;
+    /**
+     * @var PersistentResource
+     * @ORM\OneToOne(cascade={"all"})
+     */
+    protected $originalResource;
 
-	/**
-	 * @var \KayStrobach\Documents\Domain\Model\Folder
-	 * @ORM\ManyToOne(inversedBy="files")
-	 */
-	protected $parentFolder;
+    /**
+     * @var Folder
+     * @ORM\ManyToOne(inversedBy="files")
+     */
+    protected $parentFolder;
 
-	/**
-	 * @return \Neos\Flow\ResourceManagement\PersistentResource
-	 */
-	public function getOriginalResource() {
-		return $this->originalResource;
-	}
+    /**
+     * @return PersistentResource
+     */
+    public function getOriginalResource()
+    {
+        return $this->originalResource;
+    }
 
-	/**
-	 * @param \Neos\Flow\ResourceManagement\PersistentResource $originalResource
-	 */
-	public function setOriginalResource($originalResource) {
-		$this->originalResource = $originalResource;
-	}
+    /**
+     * @param PersistentResource $originalResource
+     */
+    public function setOriginalResource($originalResource)
+    {
+        $this->originalResource = $originalResource;
+    }
 
-	/**
-	 * @return Folder
-	 */
-	public function getParentFolder() {
-		return $this->parentFolder;
-	}
+    /**
+     * @return Folder
+     */
+    public function getParentFolder()
+    {
+        return $this->parentFolder;
+    }
 
-	/**
-	 * @param Folder $parentFolder
-	 */
-	public function setParentFolder($parentFolder) {
-		$this->parentFolder = $parentFolder;
-	}
+    /**
+     * @param Folder $parentFolder
+     */
+    public function setParentFolder($parentFolder)
+    {
+        $this->parentFolder = $parentFolder;
+    }
 
 
 }

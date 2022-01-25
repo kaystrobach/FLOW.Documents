@@ -8,25 +8,31 @@
 
 namespace KayStrobach\Documents\Controller;
 
+use InvalidArgumentException;
 use KayStrobach\Documents\Domain\Model\File;
 use KayStrobach\Documents\Domain\Model\Folder;
+use KayStrobach\Documents\Domain\Repository\FileRepository;
 use Neos\Flow\Annotations as Flow;
 use Neos\Error\Messages\Message;
+use Neos\Flow\Mvc\Controller\ActionController;
 use Neos\Flow\Mvc\Exception\StopActionException;
+use Neos\Flow\Persistence\Exception\IllegalObjectTypeException;
 use Neos\Flow\ResourceManagement\Exception as ResourceNotFoundException;
+use Neos\Flow\ResourceManagement\PersistentResource;
+use Neos\Flow\ResourceManagement\ResourceManager;
 
-class FileController extends \Neos\Flow\Mvc\Controller\ActionController
+class FileController extends ActionController
 {
 
     /**
      * @Flow\Inject
-     * @var \KayStrobach\Documents\Domain\Repository\FileRepository
+     * @var FileRepository
      */
     protected $fileRepository;
 
     /**
      * @Flow\Inject
-     * @var \Neos\Flow\ResourceManagement\ResourceManager
+     * @var ResourceManager
      */
     protected $resourceManager;
 
@@ -88,7 +94,7 @@ class FileController extends \Neos\Flow\Mvc\Controller\ActionController
     /**
      * @param File $file
      * @return string
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      * @throws StopActionException
      */
     public function downloadAction(File $file)
@@ -121,7 +127,7 @@ class FileController extends \Neos\Flow\Mvc\Controller\ActionController
      * removes a file
      *
      * @param File $file
-     * @throws \Neos\Flow\Persistence\Exception\IllegalObjectTypeException
+     * @throws IllegalObjectTypeException
      */
     public function removeAction(File $file)
     {
@@ -144,7 +150,7 @@ class FileController extends \Neos\Flow\Mvc\Controller\ActionController
                         'tmp_name' => $file['tmp_name'][$count],
                         'name' => $file['name'][$count]
                     );
-                    /** @var \Neos\Flow\ResourceManagement\PersistentResource $newResource */
+                    /** @var PersistentResource $newResource */
                     $newResource = $this->resourceManager->importUploadedResource($resource);
                     $newFile = new File();
                     $newFile->setParentFolder($folder);
